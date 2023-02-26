@@ -6,9 +6,8 @@
 
 namespace gen {
 
-    Sticker::Sticker(cv::Mat& mat, cv::Rect _rect): baseImage(mat) {
+    Sticker::Sticker(cv::Mat& mat, cv::Rect _rect): baseImage(mat), color(cv::Scalar(0,0,0)) {
         rect = _rect;
-        color = cv::Scalar(0, 0, 0);
         DrawRectangle();
     }
 
@@ -28,11 +27,11 @@ namespace gen {
     }
 
     void Sticker::RemovePreviouslyRectangle() {
-
+        cv::rectangle(baseImage, rect, *pageColor, 4, cv::LineTypes::FILLED, 0);
     }
 
-    void Sticker::SetColor(std::weak_ptr<cv::Scalar> color) {
-        pageColor = color;
+    void Sticker::SetPageColor(std::shared_ptr<cv::Scalar> _color) {
+        pageColor = _color;
     }
 
 }

@@ -25,7 +25,7 @@ namespace gen {
 
         void AddSticker(const std::string& name);
 
-        void ShowCurrentImage();
+        void ShowCurrentImage(const int time);
 
         void ChangeStickerSize(const std::string& name, const uint16_t& width, const uint16_t& height);
 

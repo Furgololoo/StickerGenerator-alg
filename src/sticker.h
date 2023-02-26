@@ -18,17 +18,17 @@ namespace gen {
         ~Sticker();
 
         void ChangeStickerSize(cv::Size size);
-        void SetColor(std::weak_ptr<cv::Scalar> color);
+        void SetPageColor(std::shared_ptr<cv::Scalar> _color);
+        void DrawRectangle();
 
     protected:
-        void DrawRectangle();
         void RemovePreviouslyRectangle();
 
         cv::Rect rect;
         cv::Scalar color;
         cv::Mat& baseImage;
 
-        std::weak_ptr<cv::Scalar> pageColor;
+        std::shared_ptr<cv::Scalar> pageColor;
     };
 
 }
