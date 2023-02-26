@@ -1,6 +1,10 @@
 # Prerequisites
 *.d
 
+.idea/
+cmake-build-debug-visual-studio/
+.clang-format
+
 # Compiled Object files
 *.slo
 *.lo
