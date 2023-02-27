@@ -23,11 +23,15 @@ namespace gen {
         void CreateCustomPage(const uint16_t &width, const uint16_t &height, const uint8_t &r, const uint8_t &g,
                                 const uint8_t &b);
 
-        void AddSticker(const std::string& name);
+        void AddSticker(const std::string& name, cv::Rect& rect);
 
         void ShowCurrentImage(const int time);
 
         void ChangeStickerSize(const std::string& name, const uint16_t& width, const uint16_t& height);
+
+        void DrawCircle(const int& x, const int& y);
+
+        cv::Mat GetImage() const;
 
     private:
         void CreateBasicPage(const uint16_t &width, const uint16_t &height);

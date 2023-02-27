@@ -25,8 +25,8 @@ namespace gen {
         image = cv::Mat(height, width, CV_8UC3, cv::Scalar(r,g, b));
     }
 
-    void Page::AddSticker(const std::string &name) {
-        std::unique_ptr<Sticker> sticker = std::make_unique<Sticker>(Sticker(image, cv::Rect(25,25,100,100)));
+    void Page::AddSticker(const std::string &name, cv::Rect& rect) {
+        std::unique_ptr<Sticker> sticker = std::make_unique<Sticker>(Sticker(image, rect));
         sticker->SetPageColor(pageColor);
         sticker->DrawRectangle();
         stickers.insert({name, std::move(sticker)});
@@ -44,6 +44,14 @@ namespace gen {
 
     void Page::ChangeStickerSize(const std::string &name, const uint16_t& width, const uint16_t& height) {
         stickers.at(name)->ChangeStickerSize(cv::Size(width, height));
+    }
+
+    void Page::DrawCircle(const int &x, const int &y) {
+        cv::circle(image, cv::Point(x,y), 10, cv::Scalar(0,0,255), 4, cv::LineTypes::FILLED, 0);
+    }
+
+    cv::Mat Page::GetImage() const {
+        return image;
     }
 
 } // gen

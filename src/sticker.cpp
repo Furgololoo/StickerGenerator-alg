@@ -27,6 +27,7 @@ namespace gen {
     }
 
     void Sticker::RemovePreviouslyRectangle() {
+        std::cout<<"pageColor: "<<pageColor.get()->val[0]<<" "<<pageColor.get()->val[1]<<" "<<pageColor.get()->val[2]<<std::endl;
         cv::rectangle(baseImage, rect, *pageColor, 4, cv::LineTypes::FILLED, 0);
     }
 
